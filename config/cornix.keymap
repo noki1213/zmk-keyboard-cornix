@@ -16,6 +16,7 @@
 #define SYM 1
 #define NAV 2
 #define SHORT 3
+#define WINDOW 4
 
 // キー位置の定義（Homerow Mods 用）
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // 左手
@@ -114,6 +115,14 @@
             layers = <SHORT>;
         };
 
+        // JL → Ctrl+Opt+- (WINDOW) - resize smart -50
+        combo_window_minus {
+            timeout-ms = <50>;
+            key-positions = <19 21>;  // J, L
+            bindings = <&kp LC(LA(MINUS))>;
+            layers = <WINDOW>;
+        };
+
         // MQ → + / Shift: ^ (BASE, SYM, NAV)
         combo_plus {
             timeout-ms = <50>;
@@ -128,6 +137,14 @@
             key-positions = <33 35>;  // M, Q
             bindings = <&kp LG(PLUS)>;
             layers = <SHORT>;
+        };
+
+        // MQ → Ctrl+Opt++ (WINDOW) - resize smart +50
+        combo_window_plus {
+            timeout-ms = <50>;
+            key-positions = <33 35>;  // M, Q
+            bindings = <&kp LC(LA(PLUS))>;
+            layers = <WINDOW>;
         };
 
         // UO → = / Shift: ~
@@ -334,7 +351,7 @@
 &none     &none            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U  &kp I            &kp O            &none                &none
 &kp LSHFT &hm_l LCTRL A    &hm_l LALT S     &hm_l LGUI D     &kp F  &kp G                    &kp H      &kp J  &hm_r RGUI K     &hm_r RALT L     &kp RCTRL            &kp RSHFT
 &none     &kp Z            &kp X            &kp C            &kp B  &kp V      &kp C_MUTE  &kp F13  &kp N      &kp M  &kp P            &kp Q            &none                &none
-&none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &kp SPACE          &kp ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
+&none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &kp SPACE          &lt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
@@ -391,6 +408,25 @@
 &trans    &kp LG(A)        &kp LG(X)        &mm_short_d                &mm_short_f              &kp LG(Z)                &kp LG(H)  &kp LG(J)  &kp LG(K)      &kp LG(L)        &trans               &trans
 &trans    &kp LG(Z)        &kp LG(X)        &kp LG(S)                  &kp LG(T)                &kp LG(N)  &trans &trans &kp LG(N)  &kp LG(M)  &kp LG(P)      &kp LG(Q)        &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans                   &kp LG(ENTER)     &trans     &trans         &trans           &trans               &trans
+            >;
+        };
+
+        window_layer {
+            display-name = "Window";
+
+            // Aerospaceウィンドウ操作レイヤー (Ctrl+Alt ベース)
+            // Shiftキーと併用でウィンドウ移動
+            // ------------------------------------------------------------------------------------------
+            // | --- | --- | --- | --- | --- | --- |           | --- | --- |  ↑  | --- | --- | --- |
+            // | --- |WS:5 |WS:4 |WS:3 |WS:2 |WS:1 |           |  ←  |  ↓  |  →  | --- | --- | --- |
+            // | --- | --- | --- | --- | --- | --- |     |     | --- | --- | --- | / | --- | --- |
+            //             | --- | --- | --- |           | [L] | TAB | --- |
+
+            bindings = <
+&trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
+&trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &kp LC(LA(J))       &kp LC(LA(K))       &kp LC(LA(L))   &kp LC(LA(COMMA))    &trans               &trans
+&trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &trans              &trans          &kp LC(LA(FSLH))     &trans               &trans
+&trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &kp LC(LA(TAB))     &trans          &trans               &trans               &trans
             >;
         };
     };
