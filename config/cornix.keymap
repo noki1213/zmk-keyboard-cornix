@@ -452,7 +452,7 @@
             //             | --- | --- | --- |           | [L] | TAB | --- |
 
             bindings = <
-&trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
+&trans    &trans           &trans           &trans                     &trans                   &kp LC(LA(T))            &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
 &trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &trans              &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &trans              &trans          &kp LC(LA(FSLH))     &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &kp LC(LA(TAB))     &trans          &trans               &trans               &trans
