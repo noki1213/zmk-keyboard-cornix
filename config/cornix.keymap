@@ -423,7 +423,7 @@
             bindings = <
 &trans    &trans           &mm_quot         &mm_hash         &mm_dllr  &mm_bslh               &mm_lt     &mm_lpar  &mm_lbkt       &mm_lbrc         &trans               &trans
 &trans    &kp N5           &kp N4           &kp N3           &kp N2  &kp N1                   &kp N6     &kp N7  &kp N0           &mm_pipe         &trans               &trans
-&trans    &kp LA(Y)        &none            &mm_colon        &kp AMPS  &kp GRAVE  &trans &trans &kp N8     &kp N9  &kp AT           &kp FSLH         &trans               &trans
+&trans    &trans           &kp LA(Y)        &mm_colon        &kp AMPS  &kp GRAVE  &trans &trans &kp N8     &kp N9  &kp AT           &kp FSLH         &trans               &trans
 &trans    &trans           &trans           &kp LG(SPACE)    &trans  &trans                   &trans     &trans  &trans           &trans           &trans               &trans
             >;
         };
@@ -459,7 +459,7 @@
             bindings = <
 &trans    &trans           &kp LG(W)        &kp LG(E)                  &kp LG(R)                &kp LG(F)                &kp LG(Y)  &kp LG(U)  &kp LG(I)      &kp LG(O)        &trans               &trans
 &trans    &kp LG(A)        &kp LG(X)        &mm_short_d                &mm_short_f              &kp LG(Z)                &kp LG(H)  &kp LG(J)  &kp LG(K)      &kp LG(L)        &trans               &trans
-&trans    &kp LG(Z)        &kp LG(X)        &kp LG(S)                  &kp LG(T)                &kp LG(N)  &trans &trans &kp LG(N)  &kp LG(M)  &kp LG(P)      &kp LG(Q)        &trans               &trans
+&trans    &trans           &kp LG(X)        &kp LG(S)                  &kp LG(T)                &kp LG(N)  &trans &trans &kp LG(N)  &kp LG(M)  &kp LG(P)      &kp LG(Q)        &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans                   &kp LG(ENTER)     &trans     &trans         &trans           &trans               &trans
             >;
         };
