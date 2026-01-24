@@ -350,6 +350,14 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        // mod-morph: Cmd+Tab → Shift: Option+Tab (window layer)
+        mm_window_tab: mod_morph_window_tab {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LG(TAB)>, <&kp LA(TAB)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         // ショートカットレイヤー D位置: Shift時のhold-tap
         // タップ→Cmd+Shift+Opt+V、ホールド→Cmd+Ctrl+V
         ht_d_shift: hold_tap_d_shift {
@@ -479,7 +487,7 @@
 &trans    &trans           &trans           &trans                     &trans                   &mm_layout               &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
 &trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &trans              &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &mm_ws_prev         &trans          &mm_ws_next          &trans               &trans
-&trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &kp LC(LA(TAB))     &trans          &trans               &trans               &trans
+&trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &mm_window_tab      &trans          &trans               &trans               &trans
             >;
         };
     };
