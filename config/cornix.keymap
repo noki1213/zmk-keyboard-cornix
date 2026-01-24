@@ -334,6 +334,22 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        // mod-morph: Ctrl+Alt+Q → Shift: Ctrl+Alt+Shift+Q (move workspace to next monitor)
+        mm_ws_next: mod_morph_ws_next {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(Q))>, <&kp LC(LA(LS(Q)))>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // mod-morph: Ctrl+Alt+M → Shift: Ctrl+Alt+Shift+M (move workspace to prev monitor)
+        mm_ws_prev: mod_morph_ws_prev {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(M))>, <&kp LC(LA(LS(M)))>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         // ショートカットレイヤー D位置: Shift時のhold-tap
         // タップ→Cmd+Shift+Opt+V、ホールド→Cmd+Ctrl+V
         ht_d_shift: hold_tap_d_shift {
@@ -462,7 +478,7 @@
             bindings = <
 &trans    &trans           &trans           &trans                     &trans                   &mm_layout               &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
 &trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &trans              &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
-&trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &kp LC(LA(M))       &trans          &kp LC(LA(Q))        &trans               &trans
+&trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &mm_ws_prev         &trans          &mm_ws_next          &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &kp LC(LA(TAB))     &trans          &trans               &trans               &trans
             >;
         };
