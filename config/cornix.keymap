@@ -99,11 +99,11 @@
             bindings = <&mkp RCLK>;
         };
 
-        // JL → - (BASE, SYM, NAV)
+        // JL → - / Shift: ~ (BASE, SYM, NAV)
         combo_minus {
             timeout-ms = <50>;
             key-positions = <19 21>;  // J, L
-            bindings = <&kp MINUS>;
+            bindings = <&mm_minus>;
             layers = <BASE SYM NAV>;
         };
 
@@ -299,6 +299,14 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp EQUAL>, <&kp TILDE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // mod-morph: - → Shift: ~
+        mm_minus: mod_morph_minus {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>, <&kp TILDE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
