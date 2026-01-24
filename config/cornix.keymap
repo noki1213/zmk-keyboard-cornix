@@ -310,6 +310,14 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        // mod-morph: Ctrl+Alt+T → Shift: Ctrl+Alt+Shift+T (layout toggle)
+        mm_layout: mod_morph_layout {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(T))>, <&kp LC(LA(LS(T)))>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         // mod-morph: + → Shift: ^
         mm_plus: mod_morph_plus {
             compatible = "zmk,behavior-mod-morph";
@@ -452,7 +460,7 @@
             //             | --- | --- | --- |           | [L] | TAB | --- |
 
             bindings = <
-&trans    &trans           &trans           &trans                     &trans                   &kp LC(LA(T))            &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
+&trans    &trans           &trans           &trans                     &trans                   &mm_layout               &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
 &trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &trans              &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &trans              &trans          &kp LC(LA(FSLH))     &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &kp LC(LA(TAB))     &trans          &trans               &trans               &trans
