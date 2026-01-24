@@ -290,11 +290,11 @@
             tapping-term-ms = <200>;
         };
 
-        // D位置 mod-morph: 通常→Cmd+C/Cmd+Shift+4、Shift→Cmd+Shift+Opt+V/Cmd+Ctrl+V
+        // D位置 mod-morph: 通常→Cmd+V/Cmd+Shift+V、Shift→Cmd+Shift+Opt+V/Cmd+Ctrl+V
         mm_short_d: mod_morph_short_d {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ht_nav LG(LS(N4)) LG(C)>, <&ht_d_shift LC(LG(V)) LG(LS(LA(V)))>;
+            bindings = <&ht_nav LG(LS(V)) LG(V)>, <&ht_d_shift LC(LG(V)) LG(LS(LA(V)))>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -308,11 +308,11 @@
             tapping-term-ms = <200>;
         };
 
-        // F位置 mod-morph: 通常→Cmd+V/Cmd+Shift+V、Shift→Cmd+Shift+C/Cmd+Shift+2
+        // F位置 mod-morph: 通常→Cmd+C/Cmd+Shift+4、Shift→Cmd+Shift+C/Cmd+Shift+2
         mm_short_f: mod_morph_short_f {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ht_nav LG(LS(V)) LG(V)>, <&ht_f_shift LG(LS(N2)) LG(LS(C))>;
+            bindings = <&ht_nav LG(LS(N4)) LG(C)>, <&ht_f_shift LG(LS(N2)) LG(LS(C))>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
