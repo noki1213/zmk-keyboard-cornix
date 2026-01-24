@@ -139,11 +139,11 @@
             layers = <SHORT>;
         };
 
-        // MQ → Ctrl+Opt+= (WINDOW) - resize smart +50
+        // MQ → Ctrl+Opt++ (WINDOW) - resize smart +50
         combo_window_plus {
             timeout-ms = <50>;
             key-positions = <33 35>;  // M, Q
-            bindings = <&kp LC(LA(EQUAL))>;
+            bindings = <&kp LC(LA(LS(EQUAL)))>;
             layers = <WINDOW>;
         };
 
