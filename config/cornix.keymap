@@ -337,7 +337,7 @@
 &none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &kp SPACE          &kp ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_UP C_BRI_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
 
         symbol_layer {
