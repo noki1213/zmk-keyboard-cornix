@@ -486,8 +486,8 @@
             bindings = <
 &trans    &trans           &trans           &trans                     &trans                   &mm_layout               &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
 &trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &trans              &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
-&trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &mm_ws_prev         &trans          &mm_ws_next          &trans               &trans
-&trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &mm_window_tab      &trans          &trans               &trans               &trans
+&trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &mm_ws_prev         &kp LC(LA(P))   &mm_ws_next          &trans               &trans
+&trans    &trans           &trans           &mm_window_tab             &trans                   &trans                   &trans              &trans              &trans          &trans               &trans               &trans
             >;
         };
     };
