@@ -154,26 +154,6 @@
             bindings = <&mm_equal>;
         };
 
-        // MC 長押し(3秒) → Bluetooth: Mac (BT0)
-        combo_bt_mac {
-            timeout-ms = <3000>;
-            key-positions = <33 27>;  // M, C
-            bindings = <&bt BT_SEL 0>;
-        };
-
-        // PA 長押し(3秒) → Bluetooth: iPad (BT1)
-        combo_bt_ipad {
-            timeout-ms = <3000>;
-            key-positions = <34 13>;  // P, A
-            bindings = <&bt BT_SEL 1>;
-        };
-
-        // PH 長押し(3秒) → Bluetooth: iPhone (BT2)
-        combo_bt_iphone {
-            timeout-ms = <3000>;
-            key-positions = <34 18>;  // P, H
-            bindings = <&bt BT_SEL 2>;
-        };
     };
 
     behaviors {
