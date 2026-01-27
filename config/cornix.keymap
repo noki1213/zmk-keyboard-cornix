@@ -107,11 +107,11 @@
             layers = <BASE SYM NAV>;
         };
 
-        // JL → Cmd+- (SHORT)
+        // JL → Cmd+- / Shift: Option+Cmd+- ズームアウト (SHORT)
         combo_cmd_minus {
             timeout-ms = <50>;
             key-positions = <19 21>;  // J, L
-            bindings = <&kp LG(MINUS)>;
+            bindings = <&mm_short_minus>;
             layers = <SHORT>;
         };
 
@@ -131,11 +131,11 @@
             layers = <BASE SYM NAV>;
         };
 
-        // MQ → Cmd++ (SHORT)
+        // MQ → Cmd++ / Shift: Option+Cmd+= ズームイン (SHORT)
         combo_cmd_plus {
             timeout-ms = <50>;
             key-positions = <33 35>;  // M, Q
-            bindings = <&kp LG(PLUS)>;
+            bindings = <&mm_short_plus>;
             layers = <SHORT>;
         };
 
@@ -154,23 +154,23 @@
             bindings = <&mm_equal>;
         };
 
-        // MC → Bluetooth: Mac (BT0)
+        // MC 長押し(3秒) → Bluetooth: Mac (BT0)
         combo_bt_mac {
-            timeout-ms = <50>;
+            timeout-ms = <3000>;
             key-positions = <33 27>;  // M, C
             bindings = <&bt BT_SEL 0>;
         };
 
-        // PA → Bluetooth: iPad (BT1)
+        // PA 長押し(3秒) → Bluetooth: iPad (BT1)
         combo_bt_ipad {
-            timeout-ms = <50>;
+            timeout-ms = <3000>;
             key-positions = <34 13>;  // P, A
             bindings = <&bt BT_SEL 1>;
         };
 
-        // PH → Bluetooth: iPhone (BT2)
+        // PH 長押し(3秒) → Bluetooth: iPhone (BT2)
         combo_bt_iphone {
-            timeout-ms = <50>;
+            timeout-ms = <3000>;
             key-positions = <34 18>;  // P, H
             bindings = <&bt BT_SEL 2>;
         };
@@ -310,14 +310,6 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        // mod-morph: Ctrl+Alt+T → Shift: Ctrl+Alt+Shift+T (layout toggle)
-        mm_layout: mod_morph_layout {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LA(T))>, <&kp LC(LA(LS(T)))>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         // mod-morph: + → Shift: ^
         mm_plus: mod_morph_plus {
             compatible = "zmk,behavior-mod-morph";
@@ -334,22 +326,6 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        // mod-morph: Ctrl+Alt+Q → Shift: Ctrl+Alt+Shift+Q (move workspace to next monitor)
-        mm_ws_next: mod_morph_ws_next {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LA(Q))>, <&kp LC(LA(LS(Q)))>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        // mod-morph: Ctrl+Alt+M → Shift: Ctrl+Alt+Shift+M (move workspace to prev monitor)
-        mm_ws_prev: mod_morph_ws_prev {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LA(M))>, <&kp LC(LA(LS(M)))>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         // mod-morph: Cmd+Tab → Shift: Option+Tab (window layer)
         mm_window_tab: mod_morph_window_tab {
             compatible = "zmk,behavior-mod-morph";
@@ -357,6 +333,23 @@
             bindings = <&kp LG(TAB)>, <&kp LA(TAB)>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        // mod-morph: Cmd+- → Shift: Option+Cmd+- (ズームアウト)
+        mm_short_minus: mod_morph_short_minus {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LG(MINUS)>, <&kp LA(LG(MINUS))>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // mod-morph: Cmd++ → Shift: Option+Cmd+= (ズームイン)
+        mm_short_plus: mod_morph_short_plus {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LG(PLUS)>, <&kp LA(LG(EQUAL))>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
 
         // ショートカットレイヤー D位置: Shift時のhold-tap
         // タップ→Cmd+Shift+Opt+V、ホールド→Cmd+Ctrl+V
@@ -410,7 +403,7 @@
 
             bindings = <
 &none     &none            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U  &kp I            &kp O            &none                &none
-&kp LSHFT &hm_l LCTRL A    &hm_l LALT S     &hm_l LGUI D     &kp F  &kp G                    &kp H      &kp J  &hm_r RGUI K     &hm_r RALT L     &kp Z                &kp RSHFT
+&kp LSHFT &hm_l LCTRL A    &hm_l LALT S     &hm_l LGUI D     &kp F  &kp G                    &kp H      &kp J  &hm_r RGUI K     &hm_r RALT L     &hm_r RCTRL Z        &kp RSHFT
 &none     &trans           &kp X            &kp C            &kp B  &kp V      &kp C_MUTE  &kp F13  &kp N      &kp M  &kp P            &kp Q            &none                &none
 &none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &kp SPACE          &lt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
@@ -470,23 +463,25 @@
 &trans    &trans           &kp LG(X)        &kp LG(S)                  &kp LG(T)                &kp LG(N)  &trans &trans &kp LG(N)  &kp LG(M)  &kp LG(P)      &kp LG(Q)        &trans               &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans                   &kp LG(ENTER)     &trans     &trans         &trans           &trans               &trans
             >;
+
+            // 左: 音量、右: ズーム（Option+Cmd+=/Option+Cmd+-）
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp LA(LG(MINUS)) LA(LG(EQUAL))>;
         };
 
         window_layer {
             display-name = "Window";
 
-            // Aerospaceウィンドウ操作レイヤー (Ctrl+Alt ベース)
-            // Shiftキーと併用でウィンドウ移動
+            // ウィンドウ操作レイヤー（Ctrl+Alt + 英文字）
             // ------------------------------------------------------------------------------------------
-            // | --- | --- | --- | --- | --- | --- |           | --- | --- |  ↑  | --- | --- | --- |
-            // | --- |WS:5 |WS:4 |WS:3 |WS:2 |WS:1 |           |  ←  |  ↓  |  →  | --- | --- | --- |
-            // | --- | --- | --- | --- | --- | --- |     |     | --- | --- | --- | / | --- | --- |
-            //             | --- | --- | --- |           | [L] | TAB | --- |
+            // | --- | --- |C+A+W|C+A+E|C+A+R|C+A+T|           |C+A+Y|C+A+U|C+A+I|C+A+O| --- | --- |
+            // | --- |C+A+A|C+A+S|C+A+D|C+A+F|C+A+G|           |C+A+H|C+A+J|C+A+K|C+A+L|C+A+Z| --- |
+            // | --- | --- |C+A+X|C+A+C|C+A+B|C+A+V|     |     |C+A+N|C+A+M|C+A+P|C+A+Q| --- | --- |
+            //             | TAB | --- | --- |           | [L] | --- | --- |
 
             bindings = <
-&trans    &trans           &trans           &trans                     &trans                   &mm_layout               &trans              &trans              &kp LC(LA(I))   &trans               &trans               &trans
-&trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &trans              &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
-&trans    &trans           &trans           &trans                     &trans                   &trans     &trans &trans &trans              &mm_ws_prev         &kp LC(LA(P))   &mm_ws_next          &trans               &trans
+&trans    &trans           &kp LC(LA(W))    &kp LC(LA(E))              &kp LC(LA(R))            &kp LC(LA(T))            &kp LC(LA(Y))       &kp LC(LA(U))       &kp LC(LA(I))   &kp LC(LA(O))        &trans               &trans
+&trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &kp LC(LA(H))       &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &kp LC(LA(Z))        &trans
+&trans    &trans           &kp LC(LA(X))    &kp LC(LA(C))              &kp LC(LA(B))            &kp LC(LA(V))  &trans &trans &kp LC(LA(N))   &kp LC(LA(M))       &kp LC(LA(P))   &kp LC(LA(Q))        &trans               &trans
 &trans    &trans           &trans           &mm_window_tab             &trans                   &trans                   &trans              &trans              &trans          &trans               &trans               &trans
             >;
         };
