@@ -91,6 +91,7 @@
             timeout-ms = <50>;
             key-positions = <15 16>;  // D, F
             bindings = <&mkp LCLK>;
+            layers = <BASE SYM NAV SHORT WINDOW>;
         };
 
         // DS → 右クリック
@@ -98,6 +99,7 @@
             timeout-ms = <50>;
             key-positions = <14 15>;  // S, D
             bindings = <&mkp RCLK>;
+            layers = <BASE SYM NAV SHORT WINDOW>;
         };
 
         // JL → - / Shift: ~ (BASE, SYM, NAV)
