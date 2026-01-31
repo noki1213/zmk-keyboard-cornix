@@ -29,6 +29,13 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
 
+// マウススクロールの挙動調整（加速なし、即反応）
+&msc {
+    acceleration-exponent = <0>;
+    time-to-max-speed-ms = <0>;
+    delay-ms = <0>;
+};
+
 / {
     macros {
         // ・（中黒）入力: LANG1 → / → Enter
@@ -369,6 +376,40 @@
             bindings = <&ht_nav LG(LS(N4)) LG(C)>, <&ht_f_shift LG(LS(N2)) LG(LS(C))>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        // --- スクロールレイヤー用 mod-morph ---
+
+        // E: Scroll Up (Natural: Down signal) / Shift: Top (Cmd+Up)
+        mm_scrl_e: mod_morph_scroll_e {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&kp LG(UP)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // D: Scroll Down (Natural: Up signal) / Shift: Bottom (Cmd+Down)
+        mm_scrl_d: mod_morph_scroll_d {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_UP>, <&kp LG(DOWN)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // S: Scroll Left (Natural: Right signal) / Shift: Line Start (Cmd+Left)
+        mm_scrl_s: mod_morph_scroll_s {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_RIGHT>, <&kp LG(LEFT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // F: Scroll Right (Natural: Left signal) / Shift: Line End (Cmd+Right)
+        mm_scrl_f: mod_morph_scroll_f {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_LEFT>, <&kp LG(RIGHT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     keymap {
@@ -480,8 +521,8 @@
             //             | --- | --- | [L] |           | --- | --- | --- |
 
             bindings = <
-&trans    &trans           &trans           &msc SCRL_DOWN   &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
-&trans    &trans           &msc SCRL_RIGHT  &msc SCRL_UP     &msc SCRL_LEFT   &trans          &trans     &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &trans           &mm_scrl_e       &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &mm_scrl_s       &mm_scrl_d       &mm_scrl_f       &trans          &trans     &trans  &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans     &trans &trans &trans     &trans  &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
             >;
