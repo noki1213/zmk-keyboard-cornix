@@ -18,6 +18,7 @@
 #define SHORT 3
 #define WINDOW 4
 #define SCROLL 5
+#define SETTING 6
 
 // キー位置の定義（Homerow Mods 用）
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // 左手
@@ -162,6 +163,13 @@
             timeout-ms = <40>;
             key-positions = <7 9>;  // U, O
             bindings = <&mm_equal>;
+        };
+
+        // LANG2+LANG1 ホールド → Setting レイヤー（押しているときのみ有効）
+        combo_setting_hold {
+            timeout-ms = <50>;
+            key-positions = <42 45>;  // LANG2(LH1), LANG1(RH1)
+            bindings = <&mo SETTING>;
         };
 
     };
@@ -524,6 +532,24 @@
 &trans    &trans           &trans           &mm_scrl_e       &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
 &trans    &trans           &mm_scrl_s       &mm_scrl_d       &mm_scrl_f       &trans          &trans     &trans  &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans     &trans &trans &trans     &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
+            >;
+        };
+
+        setting_layer {
+            display-name = "Setting";
+
+            // 設定レイヤー（LANG2+LANG1 同時押しでトグル）
+            // ------------------------------------------------------------------------------------------
+            // | --- | --- | --- | --- | --- | --- |           | --- | --- | --- | --- | --- | --- |
+            // | --- | --- | --- | --- | --- | --- |           | --- | --- | --- | --- | --- | --- |
+            // | --- | --- | --- | --- | BT.R | BT.1 |     |     | --- | --- | --- | --- | --- | --- |
+            //             | --- | --- | --- |           | --- | --- | --- |
+
+            bindings = <
+&trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &trans           &trans           &bt BT_CLR  &bt BT_SEL 0  &trans &trans &trans     &trans  &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
             >;
         };
