@@ -9,7 +9,7 @@
 
 // Homerow Mods の設定
 #define HM_TAPPING_TERM 250
-#define HM_PRIOR_IDLE 70
+#define HM_PRIOR_IDLE 150
 
 // レイヤー定義
 #define BASE 0
