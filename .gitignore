@@ -9,3 +9,5 @@ target
 firmware
 .claude/
 CLAUDE.md
+
+agent-log/
