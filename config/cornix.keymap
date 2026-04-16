@@ -8,7 +8,7 @@
 #include "includes/cornix54.h"
 
 // Homerow Mods の設定
-#define HM_TAPPING_TERM 250
+#define HM_TAPPING_TERM 350
 #define HM_PRIOR_IDLE 150
 
 // レイヤー定義
@@ -71,13 +71,6 @@
             timeout-ms = <50>;
             key-positions = <20 21>;  // K, L
             bindings = <&kp PERIOD>;
-        };
-
-        // UI → ?
-        combo_question {
-            timeout-ms = <50>;
-            key-positions = <7 8>;  // U, I
-            bindings = <&kp LS(FSLH)>;
         };
 
         // IO → !
@@ -181,7 +174,7 @@
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
 
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
@@ -195,7 +188,7 @@
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
 
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
@@ -428,15 +421,15 @@
 
             // まーや用 QWERTY + Homerow Mods
             // ------------------------------------------------------------------------------------------
-            // | none | none|  W  |  E  |  R  |  T  |           |  Y  |  U  |  I  |  O  | none| none |
-            // | LSFT | A/⌃ | S/⌥ | D/⌘ |  F  |  G  |           |  H  |  J  | K/⌘ | L/⌥ |  ⌃  | RSFT |
-            // | none |  Z  |  X  |  C  |  V  |  B  |     |     |  N  |  M  |  P  |  Q  | none| none |
+            // | none |  Q  |  W  |  E  |  R  |  T  |           |  Y  |  U  |  I  |  O  |  P  | none |
+            // | LSFT | A/⇧ | S/⌥ | D/⌘ | F/⌃ |  G  |           |  H  | J/⌃ | K/⌘ | L/⌥ |-/⇧ | RSFT |
+            // | none |  Z  |  X  |  C  |  V  |  B  |     |     |  N  |  M  |  、 |  。 |  ?  | none |
             //             | TAB |LANG2| SPC |           | ENT |LANG1| BKSP|
 
             bindings = <
-&none     &none            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U  &kp I            &kp O            &none                &none
-&kp LSHFT &hm_l LCTRL A    &hm_l LALT S     &hm_l LGUI D     &kp F  &kp G                    &kp H      &kp J  &hm_r RGUI K     &hm_r RALT L     &hm_r RCTRL Z        &kp RSHFT
-&none     &trans           &kp X            &kp C            &kp B  &kp V      &kp C_MUTE  &kp F13  &kp N      &kp M  &kp P            &kp Q            &none                &none
+&none     &kp Q            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U          &kp I            &kp O            &kp P                &none
+&kp LSHFT &hm_l LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r RSHFT MINUS    &kp RSHFT
+&none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &kp LS(FSLH)         &none
 &none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &lt SCROLL SPACE          &lt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
 
