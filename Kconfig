@@ -1,0 +1,6 @@
+# Workaround: WS2812_STRIP was removed in Zephyr 4.x but zmk-rgbled-widget
+# still references it without a type, causing a build error.
+# Defining it here with a type suppresses the warning.
+
+config WS2812_STRIP
+	bool "WS2812 LED strip support"
