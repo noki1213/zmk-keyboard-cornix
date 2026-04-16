@@ -506,16 +506,16 @@
 
             // ショートカットレイヤー
             // ------------------------------------------------------------------------------------------
-            // | --- | --- | --- | --- | --- | --- |           | --- | --- | --- | --- | --- | --- |
-            // | --- | --- | --- |Cp/S4|Pst/SP| --- |          | --- | --- | --- | --- | --- | --- |
-            // | --- | --- | --- | --- | --- | --- |     |     | --- | --- | --- | --- | --- | --- |
-            //             | [L] | --- | --- |           | --- | --- | --- |
+            // | --- | --- | --- | --- | --- | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
+            // | --- | --- |⌃⌘+V | --- | --- | --- |           |⇧⌘+V | --- | --- | --- | --- | --- |
+            // | --- | --- | --- |⌘+C  |⌘+V  | --- |     |     | --- |⇧⌘+2(OCR)| --- | --- | --- | --- |
+            //             | --- | --- | --- |           | --- | --- | --- |
 
             bindings = <
-&trans    &trans           &kp LG(W)        &kp LG(E)                  &kp LG(R)                &kp LG(F)                &kp LG(Y)  &kp LG(U)  &kp LG(I)      &kp LG(O)        &trans               &trans
-&trans    &kp LG(A)        &kp LG(X)        &mm_short_d                &mm_short_f              &kp LG(Z)                &kp LG(H)  &kp LG(J)  &kp LG(K)      &kp LG(L)        &trans               &trans
-&trans    &trans           &kp LG(X)        &kp LG(S)                  &kp LG(T)                &kp LG(N)  &trans &trans &kp LG(N)  &kp LG(M)  &kp LG(P)      &kp LG(Q)        &trans               &trans
-&trans    &trans           &trans           &trans                     &trans                   &trans                   &kp LG(ENTER)     &trans     &trans         &trans           &trans               &trans
+&trans    &trans           &trans           &trans           &trans  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
+&trans    &trans           &kp LC(LG(V))    &trans           &trans  &trans                   &kp LG(LS(V))   &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &trans           &kp LG(C)        &kp LG(V)  &trans  &trans &trans &trans          &kp LG(LS(N2))  &trans  &trans       &trans               &trans
+&trans    &trans           &trans           &trans           &trans  &trans                   &trans          &trans  &trans       &trans           &trans               &trans
             >;
 
             // 左: 音量、右: ズーム（Option+Cmd+=/Option+Cmd+-）
