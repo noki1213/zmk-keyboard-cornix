@@ -206,7 +206,7 @@
         // 右ホーム外側キー用（タップ: -/Shiftで~, ホールド: Shift）
         hm_r_shift_minus: homerow_mods_right_shift_minus {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             bindings = <&kp>, <&mm_minus>;
 
             flavor = "tap-preferred";
@@ -457,7 +457,7 @@
 
             bindings = <
 &none     &kp Q            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U          &kp I            &kp O            &kp P                &none
-&none     &hm_l LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift_minus RSHFT  &none
+&none     &hm_l LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift_minus RSHFT MINUS  &none
 &none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &mm_question         &none
 &none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &lt SCROLL SPACE          &lt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
