@@ -8,8 +8,8 @@
 #include "includes/cornix54.h"
 
 // Homerow Mods の設定
-#define HM_TAPPING_TERM 350
-#define HM_PRIOR_IDLE 150
+#define HM_TAPPING_TERM 500
+#define HM_PRIOR_IDLE 220
 
 // レイヤー定義
 #define BASE 0
@@ -71,6 +71,13 @@
             timeout-ms = <50>;
             key-positions = <20 21>;  // K, L
             bindings = <&kp PERIOD>;
+        };
+
+        // UI → ?
+        combo_question {
+            timeout-ms = <50>;
+            key-positions = <7 8>;  // U, I
+            bindings = <&kp LS(FSLH)>;
         };
 
         // IO → !
@@ -178,7 +185,7 @@
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
-            hold-trigger-key-positions = <KEYS_R THUMBS>;
+            hold-trigger-key-positions = <THUMBS>;
             hold-trigger-on-release;
         };
 
@@ -192,7 +199,21 @@
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
-            hold-trigger-key-positions = <KEYS_L THUMBS>;
+            hold-trigger-key-positions = <THUMBS>;
+            hold-trigger-on-release;
+        };
+
+        // 右ホーム外側キー用（タップ: -/Shiftで~, ホールド: Shift）
+        hm_r_shift_minus: homerow_mods_right_shift_minus {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <1>;
+            bindings = <&kp>, <&mm_minus>;
+
+            flavor = "tap-preferred";
+            tapping-term-ms = <HM_TAPPING_TERM>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <HM_PRIOR_IDLE>;
+            hold-trigger-key-positions = <THUMBS>;
             hold-trigger-on-release;
         };
 
@@ -298,6 +319,14 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp TILDE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // mod-morph: ? → Shift: !
+        mm_question: mod_morph_question {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LS(FSLH)>, <&kp LS(N1)>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -422,14 +451,14 @@
             // まーや用 QWERTY + Homerow Mods
             // ------------------------------------------------------------------------------------------
             // | none |  Q  |  W  |  E  |  R  |  T  |           |  Y  |  U  |  I  |  O  |  P  | none |
-            // | LSFT | A/⇧ | S/⌥ | D/⌘ | F/⌃ |  G  |           |  H  | J/⌃ | K/⌘ | L/⌥ |-/⇧ | RSFT |
-            // | none |  Z  |  X  |  C  |  V  |  B  |     |     |  N  |  M  |  、 |  。 |  ?  | none |
+            // | none | A/⇧ | S/⌥ | D/⌘ | F/⌃ |  G  |           |  H  | J/⌃ | K/⌘ | L/⌥ |-/⇧ | none |
+            // | none |  Z  |  X  |  C  |  V  |  B  |     |     |  N  |  M  |  、 |  。 | ?/! | none |
             //             | TAB |LANG2| SPC |           | ENT |LANG1| BKSP|
 
             bindings = <
 &none     &kp Q            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U          &kp I            &kp O            &kp P                &none
-&kp LSHFT &hm_l LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r RSHFT MINUS    &kp RSHFT
-&none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &kp LS(FSLH)         &none
+&none     &hm_l LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift_minus RSHFT  &none
+&none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &mm_question         &none
 &none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &lt SCROLL SPACE          &lt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
 
@@ -499,14 +528,14 @@
             // ウィンドウ操作レイヤー（Ctrl+Alt + 英文字）
             // ------------------------------------------------------------------------------------------
             // | --- | --- |C+A+W|C+A+E|C+A+R|C+A+T|           |C+A+Y|C+A+U|C+A+I|C+A+O| --- | --- |
-            // | --- |C+A+A|C+A+S|C+A+D|C+A+F|C+A+G|           |C+A+H|C+A+J|C+A+K|C+A+L|C+A+Z| --- |
-            // | --- | --- |C+A+X|C+A+C|C+A+B|C+A+V|     |     |C+A+N|C+A+M|C+A+P|C+A+Q| --- | --- |
+            // | --- |C+A+A|C+A+S|C+A+D|C+A+F|C+A+G|           |C+A+H|C+A+J|C+A+K|C+A+L| --- | --- |
+            // | --- |C+A+Z|C+A+X|C+A+C|C+A+B|C+A+V|     |     |C+A+N|C+A+M|C+A+P|C+A+Q| --- | --- |
             //             | TAB | --- | --- |           | [L] | --- | --- |
 
             bindings = <
 &trans    &trans           &kp LC(LA(W))    &kp LC(LA(E))              &kp LC(LA(R))            &kp LC(LA(T))            &kp LC(LA(Y))       &kp LC(LA(U))       &kp LC(LA(I))   &kp LC(LA(O))        &trans               &trans
-&trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &kp LC(LA(H))       &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &kp LC(LA(Z))        &trans
-&trans    &trans           &kp LC(LA(X))    &kp LC(LA(C))              &kp LC(LA(B))            &kp LC(LA(V))  &trans &trans &kp LC(LA(N))   &kp LC(LA(M))       &kp LC(LA(P))   &kp LC(LA(Q))        &trans               &trans
+&trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &kp LC(LA(H))       &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
+&trans    &kp LC(LA(Z))    &kp LC(LA(X))    &kp LC(LA(C))              &kp LC(LA(B))            &kp LC(LA(V))  &trans &trans &kp LC(LA(N))   &kp LC(LA(M))       &kp LC(LA(P))   &kp LC(LA(Q))        &trans               &trans
 &trans    &trans           &trans           &mm_window_tab             &trans                   &trans                   &trans              &trans              &trans          &trans               &trans               &trans
             >;
         };
