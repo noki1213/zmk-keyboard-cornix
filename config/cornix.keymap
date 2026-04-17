@@ -263,11 +263,11 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        // mod-morph: \ → Shift: /
+        // mod-morph: \ → Shift: `
         mm_bslh: mod_morph_backslash {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp BSLH>, <&kp FSLH>;
+            bindings = <&kp BSLH>, <&kp GRAVE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -483,15 +483,15 @@
 
             // 記号レイヤー
             // ------------------------------------------------------------------------------------------
-            // | --- | --- | '/" | #/* | $/% | \// |           | --- | --- | --- | --- | --- | --- |
-            // | --- |  5  |  4  |  3  |  2  |  1  |           |  6  |  7  |  0  | --- | --- | --- |
-            // | --- | --- | --- | --- | --- | --- |     |     |  8  |  9  | --- | --- | --- | --- |
+            // | --- | '/" | #/* | $/% | \/` |           | </>  | (/)  | [/]  | {/}  |  =  | --- |
+            // | --- |  5  |  4  |  3  |  2  |  1  |           |  6  |  7  |  8  |  9  | --- | --- |
+            // | --- | --- | --- |  :  |  &  |  |  |     |     |  _  |  0  |  @  |  /  | +/^ | --- |
             //             |Cmd+SPC| [L] | --- |           | --- | --- | --- |
 
             bindings = <
-&trans    &trans           &mm_quot         &mm_hash         &mm_dllr  &mm_bslh               &mm_lt     &mm_lpar  &mm_lbkt       &mm_lbrc         &trans               &trans
-&trans    &hm_l LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N0    &hm_r_ralt_pipe RALT PIPE  &trans               &trans
-&trans    &trans           &kp LA(Y)        &mm_colon        &kp AMPS  &kp GRAVE  &trans &trans &kp N8     &kp N9  &kp AT           &kp FSLH         &trans               &trans
+&trans    &trans           &mm_quot         &mm_hash         &mm_dllr  &mm_bslh               &mm_lt     &mm_lpar  &mm_lbkt       &mm_lbrc         &kp EQUAL            &trans
+&trans    &hm_l LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N8    &hm_r RALT N9        &trans               &trans
+&trans    &trans           &kp LA(Y)        &mm_colon        &kp AMPS  &kp PIPE   &trans &trans &kp UNDER  &kp N0  &kp AT           &kp FSLH         &mm_plus             &trans
 &trans    &trans           &trans           &kp LG(SPACE)    &trans  &trans                   &trans     &trans  &trans           &trans           &trans               &trans
             >;
         };
