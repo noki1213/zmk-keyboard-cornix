@@ -541,14 +541,14 @@
             // ウィンドウ操作レイヤー（Ctrl+Alt + 英文字）
             // ------------------------------------------------------------------------------------------
             // | --- | --- |C+A+W|C+A+E|C+A+R| --- |           | --- |C+A+U|C+A+I|C+A+O|C+A+P| --- |
-            // | --- | --- |C+A+S|C+A+D|C+A+F|C+A+G|           |C+A+H|C+A+J|C+A+K|C+A+L| --- | --- |
-            // | --- |C+A+Z| --- | --- | --- | --- |     |     | --- | --- | --- | --- | --- | --- |
+            // | --- | --- |C+A+S|C+A+D|C+A+F|C+A+G|           |C+A+H|C+A+J|C+A+K|C+A+L|C+A+- | --- |
+            // | --- |C+A+Z| --- | --- | --- | --- |     |     | --- | --- | --- | --- |C+A+S+=| --- |
             //             | --- | --- | --- |           | [L] | --- | --- |
 
             bindings = <
 &trans    &trans           &kp LC(LA(W))    &kp LC(LA(E))              &kp LC(LA(R))            &trans                   &trans              &kp LC(LA(U))       &kp LC(LA(I))   &kp LC(LA(O))        &kp LC(LA(P))        &trans
-&trans    &trans           &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &kp LC(LA(H))       &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
-&trans    &kp LC(LA(Z))    &trans           &trans                     &trans                   &trans         &trans &trans &trans          &trans              &trans          &trans               &trans               &trans
+&trans    &trans           &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &kp LC(LA(H))       &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &kp LC(LA(MINUS))    &trans
+&trans    &kp LC(LA(Z))    &trans           &trans                     &trans                   &trans         &trans &trans &trans          &trans              &trans          &trans               &kp LC(LA(LS(EQUAL))) &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &trans              &trans          &trans               &trans               &trans
             >;
         };
