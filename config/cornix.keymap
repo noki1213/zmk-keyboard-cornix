@@ -9,7 +9,6 @@
 
 // Homerow Mods の設定
 #define HM_TAPPING_TERM 300
-#define HM_PRIOR_IDLE 220
 
 // レイヤー定義
 #define BASE 0
@@ -184,7 +183,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
-            require-prior-idle-ms = <HM_PRIOR_IDLE>;
+
             hold-trigger-key-positions = <THUMBS>;
             hold-trigger-on-release;
         };
@@ -198,7 +197,21 @@
             flavor = "tap-preferred";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
-            require-prior-idle-ms = <HM_PRIOR_IDLE>;
+
+            hold-trigger-key-positions = <THUMBS>;
+            hold-trigger-on-release;
+        };
+
+        // 右ホーム外側キー用（タップ: |/Shiftで_, ホールド: RALT）
+        hm_r_ralt_pipe: homerow_mods_right_ralt_pipe {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_pipe>;
+
+            flavor = "tap-preferred";
+            tapping-term-ms = <HM_TAPPING_TERM>;
+            quick-tap-ms = <200>;
+
             hold-trigger-key-positions = <THUMBS>;
             hold-trigger-on-release;
         };
@@ -212,7 +225,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
-            require-prior-idle-ms = <HM_PRIOR_IDLE>;
+
             hold-trigger-key-positions = <THUMBS>;
             hold-trigger-on-release;
         };
@@ -477,7 +490,7 @@
 
             bindings = <
 &trans    &trans           &mm_quot         &mm_hash         &mm_dllr  &mm_bslh               &mm_lt     &mm_lpar  &mm_lbkt       &mm_lbrc         &trans               &trans
-&trans    &hm_l LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N0    &hm_r RALT PIPE  &trans               &trans
+&trans    &hm_l LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N0    &hm_r_ralt_pipe RALT PIPE  &trans               &trans
 &trans    &trans           &kp LA(Y)        &mm_colon        &kp AMPS  &kp GRAVE  &trans &trans &kp N8     &kp N9  &kp AT           &kp FSLH         &trans               &trans
 &trans    &trans           &trans           &kp LG(SPACE)    &trans  &trans                   &trans     &trans  &trans           &trans           &trans               &trans
             >;
@@ -506,14 +519,14 @@
 
             // ショートカットレイヤー
             // ------------------------------------------------------------------------------------------
-            // | --- | --- | --- | --- | --- | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
-            // | --- | --- |⌃⌘+V | --- | --- | --- |           |⇧⌘+V | --- | --- | --- | --- | --- |
+            // | --- | --- |⌘+W  |ESC  | --- | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
+            // | --- | --- |⌃⌘+V |⌘+V  |⌘+C  | --- |           |⇧⌘+V | --- | --- | --- | --- | --- |
             // | --- | --- | --- |⌘+C  |⌘+V  | --- |     |     | --- |⇧⌘+2(OCR)| --- | --- | --- | --- |
             //             | --- | --- | --- |           | --- | --- | --- |
 
             bindings = <
-&trans    &trans           &trans           &trans           &trans  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
-&trans    &trans           &kp LC(LG(V))    &trans           &trans  &trans                   &kp LG(LS(V))   &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &kp LG(W)        &kp ESC          &trans  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
+&trans    &trans           &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &trans                   &kp LG(LS(V))   &trans  &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &kp LG(C)        &kp LG(V)  &trans  &trans &trans &trans          &kp LG(LS(N2))  &trans  &trans       &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &trans          &trans  &trans       &trans           &trans               &trans
             >;
@@ -527,16 +540,16 @@
 
             // ウィンドウ操作レイヤー（Ctrl+Alt + 英文字）
             // ------------------------------------------------------------------------------------------
-            // | --- | --- |C+A+W|C+A+E|C+A+R|C+A+T|           |C+A+Y|C+A+U|C+A+I|C+A+O| --- | --- |
-            // | --- |C+A+A|C+A+S|C+A+D|C+A+F|C+A+G|           |C+A+H|C+A+J|C+A+K|C+A+L| --- | --- |
-            // | --- |C+A+Z|C+A+X|C+A+C|C+A+B|C+A+V|     |     |C+A+N|C+A+M|C+A+P|C+A+Q| --- | --- |
-            //             | TAB | --- | --- |           | [L] | --- | --- |
+            // | --- | --- |C+A+W|C+A+E|C+A+R| --- |           | --- |C+A+U|C+A+I|C+A+O|C+A+P| --- |
+            // | --- | --- |C+A+S|C+A+D|C+A+F|C+A+G|           |C+A+H|C+A+J|C+A+K|C+A+L| --- | --- |
+            // | --- |C+A+Z| --- | --- | --- | --- |     |     | --- | --- | --- | --- | --- | --- |
+            //             | --- | --- | --- |           | [L] | --- | --- |
 
             bindings = <
-&trans    &trans           &kp LC(LA(W))    &kp LC(LA(E))              &kp LC(LA(R))            &kp LC(LA(T))            &kp LC(LA(Y))       &kp LC(LA(U))       &kp LC(LA(I))   &kp LC(LA(O))        &trans               &trans
-&trans    &kp LC(LA(A))    &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &kp LC(LA(H))       &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
-&trans    &kp LC(LA(Z))    &kp LC(LA(X))    &kp LC(LA(C))              &kp LC(LA(B))            &kp LC(LA(V))  &trans &trans &kp LC(LA(N))   &kp LC(LA(M))       &kp LC(LA(P))   &kp LC(LA(Q))        &trans               &trans
-&trans    &trans           &trans           &mm_window_tab             &trans                   &trans                   &trans              &trans              &trans          &trans               &trans               &trans
+&trans    &trans           &kp LC(LA(W))    &kp LC(LA(E))              &kp LC(LA(R))            &trans                   &trans              &kp LC(LA(U))       &kp LC(LA(I))   &kp LC(LA(O))        &kp LC(LA(P))        &trans
+&trans    &trans           &kp LC(LA(S))    &kp LC(LA(D))              &kp LC(LA(F))            &kp LC(LA(G))            &kp LC(LA(H))       &kp LC(LA(J))       &kp LC(LA(K))   &kp LC(LA(L))        &trans               &trans
+&trans    &kp LC(LA(Z))    &trans           &trans                     &trans                   &trans         &trans &trans &trans          &trans              &trans          &trans               &trans               &trans
+&trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &trans              &trans          &trans               &trans               &trans
             >;
         };
 
