@@ -327,6 +327,14 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        // mod-morph: = → Shift: _
+        mm_equal_under: mod_morph_equal_under {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL>, <&kp UNDER>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         // mod-morph: - → Shift: ~
         mm_minus: mod_morph_minus {
             compatible = "zmk,behavior-mod-morph";
@@ -483,15 +491,15 @@
 
             // 記号レイヤー
             // ------------------------------------------------------------------------------------------
-            // | --- | '/" | #/* | $/% | \/` |           | </>  | (/)  | [/]  | {/}  |  =  | --- |
+            // |  ¥  | '/" | #/* | $/% | \/` |           | </>  | (/)  | [/]  | {/}  | =/_ | --- |
             // | --- |  5  |  4  |  3  |  2  |  1  |           |  6  |  7  |  8  |  9  | --- | --- |
-            // | --- | --- | --- |  :  |  &  |  |  |     |     |  _  |  0  |  @  |  /  | +/^ | --- |
+            // |  |  |  @  | --- |  :  |  &  | --- |     |     | --- |  0  |  /  | --- | +/^ | --- |
             //             |Cmd+SPC| [L] | --- |           | --- | --- | --- |
 
             bindings = <
-&trans    &trans           &mm_quot         &mm_hash         &mm_dllr  &mm_bslh               &mm_lt     &mm_lpar  &mm_lbkt       &mm_lbrc         &kp EQUAL            &trans
-&trans    &hm_l LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N8    &hm_r RALT N9        &trans               &trans
-&trans    &trans           &kp LA(Y)        &mm_colon        &kp AMPS  &kp PIPE   &trans &trans &kp UNDER  &kp N0  &kp AT           &kp FSLH         &mm_plus             &trans
+&trans    &kp LA(Y)        &mm_quot         &mm_hash         &mm_dllr  &mm_bslh               &mm_lt     &mm_lpar  &mm_lbkt       &mm_lbrc         &mm_equal_under      &trans
+&trans    &hm_l LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N8    &hm_r RALT N9        &hm_r_shift_minus RSHFT MINUS  &trans
+&trans    &kp PIPE         &kp AT           &mm_colon        &kp AMPS  &trans     &trans &trans &trans     &kp N0  &kp FSLH         &trans           &mm_plus             &trans
 &trans    &trans           &trans           &kp LG(SPACE)    &trans  &trans                   &trans     &trans  &trans           &trans           &trans               &trans
             >;
         };
@@ -526,7 +534,7 @@
 
             bindings = <
 &trans    &trans           &kp LG(W)        &kp ESC          &trans  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
-&trans    &trans           &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &trans                   &kp LG(LS(V))   &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &trans                   &kp LG(LS(V))   &trans  &trans       &kp LG(SPACE)    &trans               &trans
 &trans    &trans           &trans           &kp LG(C)        &kp LG(V)  &trans  &trans &trans &trans          &kp LG(LS(N2))  &trans  &trans       &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &trans          &trans  &trans       &trans           &trans               &trans
             >;
