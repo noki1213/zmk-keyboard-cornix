@@ -149,14 +149,6 @@
             layers = <SHORT>;
         };
 
-        // M+. → Ctrl+Opt (WINDOW)
-        combo_window_plus {
-            timeout-ms = <50>;
-            key-positions = <33 35>;  // M, .
-            bindings = <&kp LC(LALT)>;
-            layers = <WINDOW>;
-        };
-
         // UO → = / Shift: ~
         combo_equal {
             timeout-ms = <40>;
@@ -550,14 +542,13 @@
             // ------------------------------------------------------------------------------------------
             // | --- | --- |C+A+W|C+A+E|C+A+R| --- |           | --- |C+A+U|C+A+I|C+A+O|C+A+P| --- |
             // | --- | --- |C+A+S/⌥|C+A+D/⌘|C+A+F/⌃|C+A+G|     |C+A+H|C+A+J/⌃|C+A+K/⌘|C+A+L/⌥|C+A+-/⇧| --- |
-            // | --- |C+A+Z| --- | --- | --- | --- |     |     | --- | --- | --- | --- |C+A+S+=| --- |
-            // combo: M+. → C+A
+            // | --- |C+A+Z| --- | --- | --- | --- |     |     | --- |C+A+M| --- |C+A+. |C+A+S+=| --- |
             //             | --- | --- | --- |           | [L] | --- | --- |
 
             bindings = <
 &trans    &trans           &kp LC(LA(W))    &kp LC(LA(E))              &kp LC(LA(R))            &trans                   &trans              &kp LC(LA(U))       &kp LC(LA(I))   &kp LC(LA(O))        &kp LC(LA(P))        &trans
 &trans    &trans           &hm_l LALT LC(LA(S))    &hm_l LGUI LC(LA(D))    &hm_l LCTRL LC(LA(F))   &kp LC(LA(G))            &kp LC(LA(H))       &hm_r RCTRL LC(LA(J))    &hm_r RGUI LC(LA(K))   &hm_r RALT LC(LA(L))    &hm_r RSHFT LC(LA(MINUS))    &trans
-&trans    &kp LC(LA(Z))    &trans           &trans                     &trans                   &trans         &trans &trans &trans          &trans              &trans          &trans               &kp LC(LA(LS(EQUAL))) &trans
+&trans    &kp LC(LA(Z))    &trans           &trans                     &trans                   &trans         &trans &trans &trans          &kp LC(LA(M))       &trans          &kp LC(LA(PERIOD))   &kp LC(LA(LS(EQUAL))) &trans
 &trans    &trans           &trans           &trans                     &trans                   &trans                   &trans              &trans              &trans          &trans               &trans               &trans
             >;
         };
