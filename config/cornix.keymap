@@ -149,11 +149,11 @@
             layers = <SHORT>;
         };
 
-        // MQ → Ctrl+Opt++ (WINDOW) - resize smart +50
+        // M+. → Ctrl+Opt (WINDOW)
         combo_window_plus {
             timeout-ms = <50>;
-            key-positions = <33 35>;  // M, Q
-            bindings = <&kp LC(LA(LS(EQUAL)))>;
+            key-positions = <33 35>;  // M, .
+            bindings = <&kp LC(LALT)>;
             layers = <WINDOW>;
         };
 
@@ -551,6 +551,7 @@
             // | --- | --- |C+A+W|C+A+E|C+A+R| --- |           | --- |C+A+U|C+A+I|C+A+O|C+A+P| --- |
             // | --- | --- |C+A+S/⌥|C+A+D/⌘|C+A+F/⌃|C+A+G|     |C+A+H|C+A+J/⌃|C+A+K/⌘|C+A+L/⌥|C+A+-/⇧| --- |
             // | --- |C+A+Z| --- | --- | --- | --- |     |     | --- | --- | --- | --- |C+A+S+=| --- |
+            // combo: M+. → C+A
             //             | --- | --- | --- |           | [L] | --- | --- |
 
             bindings = <
