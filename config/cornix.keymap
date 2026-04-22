@@ -522,13 +522,13 @@
             // | --- | --- |⌘+W  |ESC  | --- | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
             // | --- | --- |⌃⌘+V |⌘+V  |⌘+C  | --- |           |⇧⌘+V | --- | --- | --- | --- | --- |
             // | --- | --- | --- |⌘+C  |⌘+V  | --- |     |     | --- |⇧⌘+2(OCR)| --- | --- | --- | --- |
-            //             | --- | --- | --- |           | --- | --- | --- |
+            //             | [L] | --- | --- |           |⌘+RET| --- | --- |
 
             bindings = <
 &trans    &trans           &kp LG(W)        &kp ESC          &trans  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
 &trans    &trans           &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &trans                   &kp LG(LS(V))   &trans  &trans       &kp LG(SPACE)    &trans               &trans
 &trans    &trans           &trans           &kp LG(C)        &kp LG(V)  &trans  &trans &trans &trans          &kp LG(LS(N2))  &trans  &trans       &trans               &trans
-&trans    &trans           &trans           &trans           &trans  &trans                   &trans          &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &trans           &trans           &trans  &trans                   &kp LG(ENTER)   &trans  &trans       &trans           &trans               &trans
             >;
 
             // 左: 音量、右: ズーム（Option+Cmd+=/Option+Cmd+-）
