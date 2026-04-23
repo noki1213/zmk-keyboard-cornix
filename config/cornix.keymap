@@ -8,7 +8,7 @@
 #include "includes/cornix54.h"
 
 // Homerow Mods の設定
-#define HM_TAPPING_TERM 300
+#define HM_TAPPING_TERM 250
 
 // レイヤー定義
 #define BASE 0
