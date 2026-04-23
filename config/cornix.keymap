@@ -521,13 +521,13 @@
             // ------------------------------------------------------------------------------------------
             // | --- | --- |⌘+W  |ESC  | --- | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
             // | --- |⌘+A  |⌃⌘+V |⌘+V  |⌘+C  | --- |           |⇧⌘+V | --- | --- | --- | --- | --- |
-            // | --- |⌘+Z  |⌘+X  |⌘+C  |⌘+V  | --- |     |     | --- |⇧⌘+2(OCR)| --- | --- | --- | --- |
+            // | --- |⌘+Z  |⌘+X  |⌘+C  |⌘+V  | --- |     |     | --- |⇧⌘+2(OCR)|⌘+, | --- | --- | --- |
             //             | [L] | --- | --- |           |⌘+RET| --- | --- |
 
             bindings = <
 &trans    &trans           &kp LG(W)        &kp ESC          &trans  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
 &trans    &kp LG(A)        &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &trans                   &kp LG(LS(V))   &trans  &trans       &kp LG(SPACE)    &trans               &trans
-&trans    &kp LG(Z)        &kp LG(X)        &kp LG(C)        &kp LG(V)  &trans  &trans &trans &trans          &kp LG(LS(N2))  &trans  &trans       &trans               &trans
+&trans    &kp LG(Z)        &kp LG(X)        &kp LG(C)        &kp LG(V)  &trans  &trans &trans &trans          &kp LG(LS(N2))  &kp LG(COMMA)  &trans       &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &kp LG(ENTER)   &trans  &trans       &trans           &trans               &trans
             >;
 
