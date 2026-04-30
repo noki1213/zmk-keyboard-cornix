@@ -9,6 +9,7 @@
 
 // Homerow Mods の設定
 #define HM_TAPPING_TERM 250
+#define HM_TAPPING_TERM_SHIFT 200
 
 // レイヤー定義
 #define BASE 0
@@ -49,47 +50,10 @@
     combos {
         compatible = "zmk,combos";
 
-        // JK → 、 (BASE, SYM, NAV)
-        combo_comma_jp {
-            timeout-ms = <50>;
-            key-positions = <19 20>;  // J, K
-            bindings = <&kp COMMA>;
-            layers = <BASE SYM NAV>;
-        };
-
-        // JK → Cmd+, (SHORT)
-        combo_cmd_comma {
-            timeout-ms = <50>;
-            key-positions = <19 20>;  // J, K
-            bindings = <&kp LG(COMMA)>;
-            layers = <SHORT>;
-        };
-
-        // KL → 。
-        combo_period_jp {
-            timeout-ms = <50>;
-            key-positions = <20 21>;  // K, L
-            bindings = <&kp PERIOD>;
-        };
-
-        // UI → ?
-        combo_question {
-            timeout-ms = <50>;
-            key-positions = <7 8>;  // U, I
-            bindings = <&kp LS(FSLH)>;
-        };
-
-        // IO → !
-        combo_exclaim {
-            timeout-ms = <50>;
-            key-positions = <8 9>;  // I, O
-            bindings = <&kp LS(N1)>;
-        };
-
-        // MP → ・
+        // M, → ・
         combo_nakaguro {
             timeout-ms = <50>;
-            key-positions = <33 34>;  // M, P
+            key-positions = <33 34>;  // M, ,
             bindings = <&nakaguro>;
         };
 
@@ -107,53 +71,6 @@
             key-positions = <14 15>;  // S, D
             bindings = <&mkp RCLK>;
             layers = <BASE SYM NAV SHORT WINDOW>;
-        };
-
-        // JL → - / Shift: ~ (BASE, SYM, NAV)
-        combo_minus {
-            timeout-ms = <50>;
-            key-positions = <19 21>;  // J, L
-            bindings = <&mm_minus>;
-            layers = <BASE SYM NAV>;
-        };
-
-        // JL → Cmd+- / Shift: Option+Cmd+- ズームアウト (SHORT)
-        combo_cmd_minus {
-            timeout-ms = <50>;
-            key-positions = <19 21>;  // J, L
-            bindings = <&mm_short_minus>;
-            layers = <SHORT>;
-        };
-
-        // JL → Ctrl+Opt+- (WINDOW) - resize smart -50
-        combo_window_minus {
-            timeout-ms = <50>;
-            key-positions = <19 21>;  // J, L
-            bindings = <&kp LC(LA(MINUS))>;
-            layers = <WINDOW>;
-        };
-
-        // MQ → + / Shift: ^ (BASE, SYM, NAV)
-        combo_plus {
-            timeout-ms = <50>;
-            key-positions = <33 35>;  // M, Q
-            bindings = <&mm_plus>;
-            layers = <BASE SYM NAV>;
-        };
-
-        // MQ → Cmd++ / Shift: Option+Cmd+= ズームイン (SHORT)
-        combo_cmd_plus {
-            timeout-ms = <50>;
-            key-positions = <33 35>;  // M, Q
-            bindings = <&mm_short_plus>;
-            layers = <SHORT>;
-        };
-
-        // UO → = / Shift: ~
-        combo_equal {
-            timeout-ms = <40>;
-            key-positions = <7 9>;  // U, O
-            bindings = <&mm_equal>;
         };
 
         // LANG2+LANG1 ホールド → Setting レイヤー（押しているときのみ有効）
@@ -174,6 +91,20 @@
 
             flavor = "tap-preferred";
             tapping-term-ms = <HM_TAPPING_TERM>;
+            quick-tap-ms = <200>;
+
+            hold-trigger-key-positions = <THUMBS>;
+            hold-trigger-on-release;
+        };
+
+        // 左手 Shift 専用 Homerow Mods（tapping-term 短め）
+        hm_l_shift: homerow_mods_left_shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "tap-preferred";
+            tapping-term-ms = <HM_TAPPING_TERM_SHIFT>;
             quick-tap-ms = <200>;
 
             hold-trigger-key-positions = <THUMBS>;
@@ -209,13 +140,13 @@
         };
 
         // 右ホーム外側キー用（タップ: -/Shiftで~, ホールド: Shift）
-        hm_r_shift_minus: homerow_mods_right_shift_minus {
+        hm_r_shift: homerow_mods_right_shift_minus {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&mm_minus>;
 
             flavor = "tap-preferred";
-            tapping-term-ms = <HM_TAPPING_TERM>;
+            tapping-term-ms = <HM_TAPPING_TERM_SHIFT>;
             quick-tap-ms = <200>;
 
             hold-trigger-key-positions = <THUMBS>;
@@ -470,7 +401,7 @@
 
             bindings = <
 &none     &kp Q            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U          &kp I            &kp O            &kp P                &none
-&none     &hm_l LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift_minus RSHFT MINUS  &none
+&none     &hm_l_shift LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift RSHFT MINUS  &none
 &none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &mm_question         &none
 &none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &lt SCROLL SPACE          &lt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
@@ -490,7 +421,7 @@
 
             bindings = <
 &trans    &kp LA(Y)        &mm_quot         &mm_hash         &mm_dllr  &mm_bslh               &mm_lt     &mm_lpar  &mm_lbkt       &mm_lbrc         &mm_equal_under      &trans
-&trans    &hm_l LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N8    &hm_r RALT N9        &hm_r_shift_minus RSHFT MINUS  &trans
+&trans    &hm_l_shift LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N8    &hm_r RALT N9        &hm_r_shift RSHFT MINUS  &trans
 &trans    &kp PIPE         &kp AT           &mm_colon        &kp AMPS  &trans     &trans &trans &trans     &kp N0  &kp FSLH         &trans           &mm_plus             &trans
 &trans    &trans           &trans           &kp LG(SPACE)    &trans  &trans                   &trans     &trans  &trans           &trans           &trans               &trans
             >;
@@ -519,14 +450,14 @@
 
             // ショートカットレイヤー
             // ------------------------------------------------------------------------------------------
-            // | --- | --- |⌘+W  |ESC  | --- | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
-            // | --- |⌘+A  |⌃⌘+V |⌘+V  |⌘+C  | --- |           |クリップボード履歴| --- | --- |Raycast| --- | --- |
+            // | --- | --- |⌘+W  |ESC  |⌃⌥+V | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
+            // | --- |⌘+A  |⌃⌘+V |⌘+V  |⌘+C  |⌘+G  |           |クリップボード履歴| --- | --- |Raycast| --- | --- |
             // | --- |⌘+Z  |⌘+X  |⇧⌘+2 |⇧⌘+4 | --- |     |     | --- |⇧⌘+2(OCR)|⌘+, | --- | --- | --- |
             //             | [L] | --- | --- |           |⌘+RET| --- | --- |
 
             bindings = <
-&trans    &trans           &kp LG(W)        &kp ESC          &trans  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
-&trans    &kp LG(A)        &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &trans                   &kp LG(LS(V))   &trans  &trans       &kp LG(SPACE)    &trans               &trans
+&trans    &trans           &kp LG(W)        &kp ESC          &kp LC(LA(V))  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
+&trans    &kp LG(A)        &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &kp LG(G)                &kp LG(LS(V))   &trans  &trans       &kp LG(SPACE)    &trans               &trans
 &trans    &kp LG(Z)        &kp LG(X)        &kp LG(LS(N2))   &kp LG(LS(N4))  &trans  &trans &trans &trans          &kp LG(LS(N2))  &kp LG(COMMA)  &trans       &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &kp LG(ENTER)   &trans  &trans       &trans           &trans               &trans
             >;
