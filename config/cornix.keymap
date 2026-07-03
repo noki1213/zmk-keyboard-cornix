@@ -58,7 +58,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp LGUI &msc SCRL_DOWN &msc SCRL_DOWN &msc SCRL_DOWN>
+                = <&macro_press &kp LGUI &msc SCRL_DOWN>
                 , <&macro_pause_for_release>
                 , <&macro_release &msc SCRL_DOWN &kp LGUI>;
         };
@@ -68,7 +68,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp LGUI &msc SCRL_UP &msc SCRL_UP &msc SCRL_UP>
+                = <&macro_press &kp LGUI &msc SCRL_UP>
                 , <&macro_pause_for_release>
                 , <&macro_release &msc SCRL_UP &kp LGUI>;
         };
