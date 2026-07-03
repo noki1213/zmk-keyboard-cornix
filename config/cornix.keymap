@@ -73,6 +73,22 @@
             layers = <BASE SYM NAV SHORT WINDOW>;
         };
 
+        // JK → 左クリック
+        combo_lclick_r {
+            timeout-ms = <50>;
+            key-positions = <19 20>;  // J, K
+            bindings = <&mkp LCLK>;
+            layers = <BASE SYM NAV SHORT WINDOW>;
+        };
+
+        // KL → 右クリック
+        combo_rclick_r {
+            timeout-ms = <50>;
+            key-positions = <20 21>;  // K, L
+            bindings = <&mkp RCLK>;
+            layers = <BASE SYM NAV SHORT WINDOW>;
+        };
+
         // LANG2+LANG1 ホールド → Setting レイヤー（押しているときのみ有効）
         combo_setting_hold {
             timeout-ms = <50>;
@@ -416,13 +432,13 @@
             // ------------------------------------------------------------------------------------------
             // |  ¥  | '/" | #/* | $/% | \/` |           | </>  | (/)  | [/]  | {/}  | =/_ | --- |
             // | --- |  5  |  4  |  3  |  2  |  1  |           |  6  |  7  |  8  |  9  | --- | --- |
-            // |  |  |  @  | --- |  :  |  &  | --- |     |     | --- |  0  |  /  | --- | +/^ | --- |
+            // |  |  |  @  | --- |  :  |  &  |  @  | --- |  /  | --- |  0  |  ,  | --- | +/^ | --- |
             //             |Cmd+SPC| [L] | --- |           | --- | --- | --- |
 
             bindings = <
 &trans    &kp LA(Y)        &mm_quot         &mm_hash         &mm_dllr  &mm_bslh               &mm_lt     &mm_lpar  &mm_lbkt       &mm_lbrc         &mm_equal_under      &trans
 &trans    &hm_l_shift LSHFT N5   &hm_l LALT N4    &hm_l LGUI N3    &hm_l LCTRL N2  &kp N1           &kp N6     &hm_r RCTRL N7  &hm_r RGUI N8    &hm_r RALT N9        &hm_r_shift RSHFT MINUS  &trans
-&trans    &kp PIPE         &kp AT           &mm_colon        &kp AMPS  &trans     &trans &trans &trans     &kp N0  &kp FSLH         &trans           &mm_plus             &trans
+&trans    &kp PIPE         &kp AT           &mm_colon        &kp AMPS  &kp AT     &trans &trans &kp FSLH     &kp N0  &trans         &trans           &mm_plus             &trans
 &trans    &trans           &trans           &kp LG(SPACE)    &trans  &trans                   &trans     &trans  &trans           &trans           &trans               &trans
             >;
         };
