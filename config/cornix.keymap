@@ -46,6 +46,13 @@
             bindings = <&kp LANG1 &kp FSLH &kp ENTER>;
         };
 
+        // suiei1213 入力
+        macro_suiei: macro_suiei {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp S &kp U &kp I &kp E &kp I &kp N1 &kp N2 &kp N1 &kp N3>;
+        };
+
         // Cmd+上スクロール（押している間続く）: ピンチイン（ズームイン）
         zoom_in: zoom_in {
             compatible = "zmk,behavior-macro";
@@ -107,6 +114,14 @@
             key-positions = <20 21>;  // K, L
             bindings = <&mkp RCLK>;
             layers = <BASE SYM NAV SHORT WINDOW>;
+        };
+
+        // SDFKJL → suiei1213
+        combo_suiei {
+            timeout-ms = <50>;
+            key-positions = <14 15 16 19 20 21>;  // S, D, F, J, K, L
+            bindings = <&macro_suiei>;
+            layers = <BASE>;
         };
 
         // LANG2+LANG1 ホールド → Setting レイヤー（押しているときのみ有効）
