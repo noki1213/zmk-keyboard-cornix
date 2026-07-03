@@ -45,6 +45,26 @@
             #binding-cells = <0>;
             bindings = <&kp LANG1 &kp FSLH &kp ENTER>;
         };
+
+        // Cmd+上スクロール（押している間続く）: ピンチイン（ズームイン）
+        zoom_in: zoom_in {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &msc SCRL_DOWN>
+                , <&macro_pause_for_release>
+                , <&macro_release &msc SCRL_DOWN &kp LGUI>;
+        };
+
+        // Cmd+下スクロール（押している間続く）: ピンチアウト（ズームアウト）
+        zoom_out: zoom_out {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &msc SCRL_UP>
+                , <&macro_pause_for_release>
+                , <&macro_release &msc SCRL_UP &kp LGUI>;
+        };
     };
 
     combos {
@@ -505,14 +525,14 @@
 
             // スクロールレイヤー
             // ------------------------------------------------------------------------------------------
-            // | --- | --- | --- |  E↑ | --- | --- |           | --- | --- | --- | --- | --- | --- |
-            // | --- | --- | S←  |  D↓ | F→  | --- |           | --- | --- | --- | --- | --- | --- |
+            // | --- | --- | --- |  E↑ | --- | --- |           | --- | --- |Iズーム+| --- | --- | --- |
+            // | --- | --- | S←  |  D↓ | F→  | --- |           | --- | --- |Kズーム-| --- | --- | --- |
             // | --- | --- | --- | --- | --- | --- |     |     | --- | --- | --- | --- | --- | --- |
             //             | --- | --- | [L] |           | --- | --- | --- |
 
             bindings = <
-&trans    &trans           &trans           &mm_scrl_e       &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
-&trans    &trans           &mm_scrl_s       &mm_scrl_d       &mm_scrl_f       &trans          &trans     &trans  &trans       &trans           &trans               &trans
+&trans    &trans           &trans           &mm_scrl_e       &trans  &trans                   &trans     &trans  &zoom_in     &trans           &trans               &trans
+&trans    &trans           &mm_scrl_s       &mm_scrl_d       &mm_scrl_f       &trans          &trans     &trans  &zoom_out    &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans     &trans &trans &trans     &trans  &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans  &trans       &trans           &trans               &trans
             >;
