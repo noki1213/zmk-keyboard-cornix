@@ -241,15 +241,6 @@
             tapping-term-ms = <200>;
         };
 
-        // 文字キー長押し → F15/F16（U/R/M/V長押しでF15、E/I/C長押しでF16）
-        ht_longpress: hold_tap_longpress {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <250>;
-        };
-
         // mod-morph: ' → Shift: "
         mm_quot: mod_morph_quote {
             compatible = "zmk,behavior-mod-morph";
@@ -488,9 +479,9 @@
             //             | TAB |LANG2| SPC |           | ENT |LANG1| BKSP|
 
             bindings = <
-&none     &kp Q            &kp W            &ht_longpress E F16   &ht_longpress R F15  &kp T                    &kp Y      &ht_longpress U F15    &ht_longpress I F16   &kp O            &kp P                &none
+&none     &kp Q            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U          &kp I            &kp O            &kp P                &none
 &none     &hm_l_shift LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift RSHFT MINUS  &none
-&none     &kp Z            &kp X            &ht_longpress C F16   &ht_longpress V F15  &kp B      &kp C_MUTE  &kp F13  &kp N      &ht_longpress M F15   &kp COMMA        &kp PERIOD       &mm_question         &none
+&none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &mm_question         &none
 &none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &lt SCROLL SPACE          &lt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
 
