@@ -152,6 +152,20 @@
             bindings = <&kp F16>;
         };
 
+        // FA → F17
+        combo_f17_l {
+            timeout-ms = <50>;
+            key-positions = <13 16>;  // A, F
+            bindings = <&kp F17>;
+        };
+
+        // J- → F17
+        combo_f17_r {
+            timeout-ms = <50>;
+            key-positions = <19 22>;  // J, -
+            bindings = <&kp F17>;
+        };
+
         // LANG2+LANG1 ホールド → Setting レイヤー（押しているときのみ有効）
         combo_setting_hold {
             timeout-ms = <50>;
