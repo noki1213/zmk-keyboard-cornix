@@ -583,13 +583,13 @@
             // ショートカットレイヤー
             // ------------------------------------------------------------------------------------------
             // | --- | --- |⌘+W  |ESC  |⌃⌥+V | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
-            // | --- |⌘+A  |⌃⌘+V |⌘+V  |⌘+C  |⌘+G  |           |クリップボード履歴| --- | --- |Raycast| --- | --- |
+            // | --- |⌘+A  |⌃⌘+V |⌘+V  |⌘+C  |⌘+G  |           |クリップボード履歴| --- |Triggerkey|Raycast| --- | --- |
             // | --- |⌘+Z  |⌘+X  |⇧⌘+2 |⇧⌘+4 | --- |     |     |⌃⌥+N|⇧⌘+2(OCR)|⌘+, | --- | --- | --- |
             //             | [L] | --- | --- |           |⌘+RET| --- | --- |
 
             bindings = <
 &trans    &trans           &kp LG(W)        &kp ESC          &kp LC(LA(V))  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
-&trans    &kp LG(A)        &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &kp LG(G)                &kp LG(LS(V))   &trans  &trans       &kp LG(SPACE)    &trans               &trans
+&trans    &kp LG(A)        &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &kp LG(G)                &kp LG(LS(V))   &trans  &kp LS(LC(LA(LG(SPACE))))  &kp LG(SPACE)    &trans               &trans
 &trans    &kp LG(Z)        &kp LG(X)        &kp LG(LS(N2))   &kp LG(LS(N4))  &trans  &trans &trans &kp LC(LA(N))   &kp LG(LS(N2))  &kp LG(COMMA)  &trans       &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &kp LG(ENTER)   &trans  &trans       &trans           &trans               &trans
             >;
