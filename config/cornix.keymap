@@ -625,9 +625,6 @@
 &trans    &kp Z            &kp X            &kp C            &kp V   &kp B   &trans &trans    &kp N           &kp M   &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &kp LG(ENTER)   &trans  &trans       &trans           &trans               &trans
             >;
-
-            // 左: 音量、右: ズーム（Option+Cmd+=/Option+Cmd+-）
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp LA(LG(MINUS)) LA(LG(EQUAL))>;
         };
 
         window_layer {
