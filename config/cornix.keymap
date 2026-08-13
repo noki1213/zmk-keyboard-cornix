@@ -81,6 +81,23 @@
                 , <&macro_release &mo MACRO_PLACEHOLDER>;
         };
 
+        // レイヤー有効化 + 入った瞬間に Triggerkey のトリガー（⇧⌃⌥⌘Space）を1回送る
+        // パラメータ = 有効化するレイヤー番号
+        // レイヤー中のキーは素の英字なので、そのままコマンド（ogh など）を打てる
+        layer_tk: layer_tk {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_press &mo MACRO_PLACEHOLDER>
+                , <&macro_tap &kp LS(LC(LA(LG(SPACE))))>
+                , <&macro_pause_for_release>
+                , <&macro_param_1to1>
+                , <&macro_release &mo MACRO_PLACEHOLDER>;
+        };
+
         // Cmd+下スクロール（押している間続く）: ピンチアウト（ズームアウト）
         zoom_out: zoom_out {
             compatible = "zmk,behavior-macro";
@@ -108,7 +125,7 @@
             timeout-ms = <50>;
             key-positions = <15 16>;  // D, F
             bindings = <&mkp LCLK>;
-            layers = <BASE SYM NAV SHORT>;
+            layers = <BASE SYM NAV>;
         };
 
         // DS → 右クリック
@@ -116,7 +133,7 @@
             timeout-ms = <50>;
             key-positions = <14 15>;  // S, D
             bindings = <&mkp RCLK>;
-            layers = <BASE SYM NAV SHORT>;
+            layers = <BASE SYM NAV>;
         };
 
         // JK → 左クリック
@@ -124,7 +141,7 @@
             timeout-ms = <50>;
             key-positions = <19 20>;  // J, K
             bindings = <&mkp LCLK>;
-            layers = <BASE SYM NAV SHORT>;
+            layers = <BASE SYM NAV>;
         };
 
         // KL → 右クリック
@@ -132,7 +149,7 @@
             timeout-ms = <50>;
             key-positions = <20 21>;  // K, L
             bindings = <&mkp RCLK>;
-            layers = <BASE SYM NAV SHORT>;
+            layers = <BASE SYM NAV>;
         };
 
         // SDFKJL → suiei1213
@@ -148,7 +165,7 @@
             timeout-ms = <50>;
             key-positions = <14 16>;  // S, F
             bindings = <&kp F15>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
         };
 
         // JL → F15
@@ -156,7 +173,7 @@
             timeout-ms = <50>;
             key-positions = <19 21>;  // J, L
             bindings = <&kp F15>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
         };
 
         // FDS → F16
@@ -164,7 +181,7 @@
             timeout-ms = <50>;
             key-positions = <14 15 16>;  // S, D, F
             bindings = <&kp F16>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
         };
 
         // JKL → F16
@@ -172,7 +189,7 @@
             timeout-ms = <50>;
             key-positions = <19 20 21>;  // J, K, L
             bindings = <&kp F16>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
         };
 
         // FA → F17
@@ -180,7 +197,7 @@
             timeout-ms = <50>;
             key-positions = <13 16>;  // A, F
             bindings = <&kp F17>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
         };
 
         // J- → F17
@@ -188,7 +205,7 @@
             timeout-ms = <50>;
             key-positions = <19 22>;  // J, -
             bindings = <&kp F17>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
         };
 
         // LANG2+LANG1 ホールド → Setting レイヤー（押しているときのみ有効）
@@ -280,6 +297,18 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&layer_ctrl_alt>, <&kp>;
+
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+        };
+
+        // Triggerkey 付きレイヤータップ（&lt の代わり）
+        // タップ: 第2引数のキー / ホールド: レイヤー有効化 + トリガーを1回送る
+        // flavor と tapping-term は ZMK 標準の &lt と同じにして、タップ時の入力の出やすさを変えない
+        lt_tk: layer_tap_tk {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&layer_tk>, <&kp>;
 
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -535,7 +564,7 @@
 &none     &kp Q            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U          &kp I            &kp O            &kp P                &none
 &none     &hm_l_shift LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift RSHFT MINUS  &none
 &none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &mm_question         &none
-&none     &none            &none            &lt SHORT TAB    &lt SYM LANG2  &lt SCROLL SPACE          &lt_ctrl_alt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
+&none     &none            &none            &lt_tk SHORT TAB &lt SYM LANG2  &lt SCROLL SPACE          &lt_ctrl_alt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
@@ -580,17 +609,20 @@
         shortcut_layer {
             display-name = "Shortcut";
 
-            // ショートカットレイヤー
+            // ショートカットレイヤー（Triggerkey 専用）
+            // レイヤーキー（&lt_tk）をホールドした瞬間にトリガー(⇧⌃⌥⌘Space)が1回飛ぶ。
+            // このレイヤーの英字は素の &kp なので、ホームロー Mods もコンボも効かない。
+            // 押しっぱなしのまま ogh などのコマンドを打って離す。
             // ------------------------------------------------------------------------------------------
-            // | --- | --- |⌘+W  |ESC  |⌃⌥+V | --- |           | --- | --- | --- | --- |⇧⌘+4 | --- |
-            // | --- |⌘+A  |⌃⌘+V |⌘+V  |⌘+C  |⌘+G  |           |クリップボード履歴| --- |Triggerkey|Raycast| --- | --- |
-            // | --- |⌘+Z  |⌘+X  |⇧⌘+2 |⇧⌘+4 | --- |     |     |⌃⌥+N|⇧⌘+2(OCR)|⌘+, | --- | --- | --- |
+            // | --- |  Q  |  W  |  E  |  R  |  T  |           |  Y  |  U  |  I  |  O  |  P  | --- |
+            // | --- |  A  |  S  |  D  |  F  |  G  |           |  H  |  J  |  K  |  L  | --- | --- |
+            // | --- |  Z  |  X  |  C  |  V  |  B  | --- | --- |  N  |  M  | --- | --- | --- | --- |
             //             | [L] | --- | --- |           |⌘+RET| --- | --- |
 
             bindings = <
-&trans    &trans           &kp LG(W)        &kp ESC          &kp LC(LA(V))  &trans                   &trans          &trans  &trans       &trans           &kp LG(LS(N4))       &trans
-&trans    &kp LG(A)        &kp LC(LG(V))    &kp LG(V)        &kp LG(C)  &kp LG(G)                &kp LG(LS(V))   &trans  &kp LS(LC(LA(LG(SPACE))))  &kp LG(SPACE)    &trans               &trans
-&trans    &kp LG(Z)        &kp LG(X)        &kp LG(LS(N2))   &kp LG(LS(N4))  &trans  &trans &trans &kp LC(LA(N))   &kp LG(LS(N2))  &kp LG(COMMA)  &trans       &trans               &trans
+&trans    &kp Q            &kp W            &kp E            &kp R   &kp T                    &kp Y           &kp U   &kp I        &kp O            &kp P                &trans
+&trans    &kp A            &kp S            &kp D            &kp F   &kp G                    &kp H           &kp J   &kp K        &kp L            &trans               &trans
+&trans    &kp Z            &kp X            &kp C            &kp V   &kp B   &trans &trans    &kp N           &kp M   &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &kp LG(ENTER)   &trans  &trans       &trans           &trans               &trans
             >;
 
