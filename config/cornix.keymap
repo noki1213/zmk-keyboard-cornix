@@ -304,13 +304,15 @@
 
         // Triggerkey 付きレイヤータップ（&lt の代わり）
         // タップ: 第2引数のキー / ホールド: レイヤー有効化 + トリガーを1回送る
-        // flavor と tapping-term は ZMK 標準の &lt と同じにして、タップ時の入力の出やすさを変えない
+        // flavor は hold-preferred。tap-preferred だと tapping-term を待ち切るまでホールドと確定せず、
+        // トリガー送出が毎回 200ms 遅れるうえ、待ち時間内に次のキーを打つとタップ側（TAB）に倒れるため。
+        // hold-preferred は次のキーが押された瞬間にホールドが確定するので待ち時間が出ない。
         lt_tk: layer_tap_tk {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&layer_tk>, <&kp>;
 
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
         };
 
