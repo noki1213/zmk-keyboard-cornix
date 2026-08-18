@@ -81,12 +81,9 @@
                 , <&macro_release &mo MACRO_PLACEHOLDER>;
         };
 
-        // レイヤー有効化 + 入った瞬間に Triggerkey のトリガー（⇧⌃⌥⌘Space）を1回送り、
-        // 離した瞬間に終了の合図（⇧⌃⌥⌘Esc）を送る
+        // レイヤー有効化 + 入った瞬間に Triggerkey のトリガー（⇧⌃⌥⌘Space）を1回送る
         // パラメータ = 有効化するレイヤー番号
-        // レイヤー中のキーは素の英字なので、そのままコマンド（ogh など）を打てる。
-        // 離すまで Triggerkey 側がセッションを閉じないため、押しっぱなしのまま
-        // y（コピー）→ pp（ペースト）のように続けて打てる。
+        // レイヤー中のキーは素の英字なので、そのままコマンド（ogh など）を打てる
         layer_tk: layer_tk {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -97,7 +94,6 @@
                 , <&macro_press &mo MACRO_PLACEHOLDER>
                 , <&macro_tap &kp LS(LC(LA(LG(SPACE))))>
                 , <&macro_pause_for_release>
-                , <&macro_tap &kp LS(LC(LA(LG(ESC))))>
                 , <&macro_param_1to1>
                 , <&macro_release &mo MACRO_PLACEHOLDER>;
         };
