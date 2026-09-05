@@ -603,7 +603,7 @@
 &trans    &trans           &trans           &trans           &trans  &trans                   &trans     &kp LG(UP)  &kp UP       &kp LG(DOWN)     &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &ht_nav LG(LS(LEFT)) LG(LEFT)  &kp LEFT  &kp DOWN  &kp RIGHT  &ht_nav LG(LS(RIGHT)) LG(RIGHT)  &trans
 &trans    &trans           &trans           &trans           &trans  &trans     &trans &trans &trans     &trans      &trans       &trans           &trans               &trans
-&trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans      &kp ESC      &trans           &trans               &trans
+&trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans      &trans       &trans           &trans               &trans
             >;
         };
 
