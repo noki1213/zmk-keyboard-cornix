@@ -9,7 +9,6 @@
 
 // Homerow Mods の設定
 #define HM_TAPPING_TERM 200
-#define HM_TAPPING_TERM_SHIFT 200
 
 // レイヤー定義
 #define BASE 0
@@ -233,14 +232,14 @@
             hold-trigger-on-release;
         };
 
-        // 左手 Shift 専用 Homerow Mods（tapping-term 短め）
+        // 左手 Shift 専用 Homerow Mods
         hm_l_shift: homerow_mods_left_shift {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
 
             flavor = "tap-preferred";
-            tapping-term-ms = <HM_TAPPING_TERM_SHIFT>;
+            tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
 
             hold-trigger-key-positions = <THUMBS>;
@@ -282,7 +281,7 @@
             bindings = <&kp>, <&mm_minus>;
 
             flavor = "tap-preferred";
-            tapping-term-ms = <HM_TAPPING_TERM_SHIFT>;
+            tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <200>;
 
             hold-trigger-key-positions = <THUMBS>;
