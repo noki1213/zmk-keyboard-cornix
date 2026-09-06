@@ -207,6 +207,22 @@
             layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
         };
 
+        // WE → ESC
+        combo_esc_l {
+            timeout-ms = <50>;
+            key-positions = <2 3>;  // W, E
+            bindings = <&kp ESC>;
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+        };
+
+        // IO → ESC
+        combo_esc_r {
+            timeout-ms = <50>;
+            key-positions = <8 9>;  // I, O
+            bindings = <&kp ESC>;
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+        };
+
         // LANG2+LANG1 ホールド → Setting レイヤー（押しているときのみ有効）
         combo_setting_hold {
             timeout-ms = <50>;
