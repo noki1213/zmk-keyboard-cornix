@@ -223,11 +223,11 @@
             layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
         };
 
-        // LANG2+LANG1 ホールド → Setting レイヤー（押しているときのみ有効）
-        combo_setting_hold {
+        // LANG2+LANG1 → Command + Option + Space
+        combo_cmd_opt_space {
             timeout-ms = <50>;
             key-positions = <42 45>;  // LANG2(LH1), LANG1(RH1)
-            bindings = <&mo SETTING>;
+            bindings = <&kp LA(LG(SPACE))>;
             layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
         };
 
