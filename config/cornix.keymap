@@ -111,11 +111,35 @@
     combos {
         compatible = "zmk,combos";
 
-        // M, → ・
-        combo_nakaguro {
+        // CV → TAB
+        combo_tab_l {
+            timeout-ms = <50>;
+            key-positions = <27 28>;  // C, V
+            bindings = <&kp TAB>;
+            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+        };
+
+        // M, → TAB
+        combo_tab_r {
             timeout-ms = <50>;
             key-positions = <33 34>;  // M, ,
-            bindings = <&nakaguro>;
+            bindings = <&kp TAB>;
+            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+        };
+
+        // ER → Triggerkey (⇧⌃⌥⌘Space)
+        combo_tk_l {
+            timeout-ms = <50>;
+            key-positions = <3 4>;  // E, R
+            bindings = <&kp LS(LC(LA(LG(SPACE))))>;
+            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+        };
+
+        // UI → Triggerkey (⇧⌃⌥⌘Space)
+        combo_tk_r {
+            timeout-ms = <50>;
+            key-positions = <7 8>;  // U, I
+            bindings = <&kp LS(LC(LA(LG(SPACE))))>;
             layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
         };
 
