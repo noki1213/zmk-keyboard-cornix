@@ -604,13 +604,13 @@
             // | none |  Q  |  W  |  E  |  R  |  T  |           |  Y  |  U  |  I  |  O  |  P  | none |
             // | none | A/⇧ | S/⌥ | D/⌘ | F/⌃ |  G  |           |  H  | J/⌃ | K/⌘ | L/⌥ |-/⇧ | none |
             // | none |  Z  |  X  |  C  |  V  |  B  |     |     |  N  |  M  |  、 |  。 | ?/! | none |
-            //             | TAB |LANG2| SPC |           | ENT |LANG1| BKSP|
+            //             | TK  |LANG2| SPC |           | ENT |LANG1| BKSP|
 
             bindings = <
 &none     &kp Q            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U          &kp I            &kp O            &kp P                &none
 &none     &hm_l_shift LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift RSHFT MINUS  &none
 &none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &mm_question         &none
-&none     &none            &none            &lt_tk SHORT TAB &lt SYM LANG2  &lt SCROLL SPACE          &lt_ctrl_alt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
+&none     &none            &none            &lt_tk SHORT LS(LC(LA(LG(SPACE)))) &lt SYM LANG2  &lt SCROLL SPACE          &lt_ctrl_alt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
