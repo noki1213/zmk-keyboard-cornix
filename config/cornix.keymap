@@ -127,6 +127,22 @@
             layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
         };
 
+        // WR → TAB
+        combo_tab_wr {
+            timeout-ms = <50>;
+            key-positions = <2 4>;  // W, R
+            bindings = <&kp TAB>;
+            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+        };
+
+        // UO → TAB
+        combo_tab_uo {
+            timeout-ms = <50>;
+            key-positions = <7 9>;  // U, O
+            bindings = <&kp TAB>;
+            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+        };
+
         // ER → Triggerkey (⇧⌃⌥⌘Space)
         combo_tk_l {
             timeout-ms = <50>;
