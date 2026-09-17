@@ -111,24 +111,8 @@
     combos {
         compatible = "zmk,combos";
 
-        // CV → TAB
-        combo_tab_l {
-            timeout-ms = <50>;
-            key-positions = <27 28>;  // C, V
-            bindings = <&kp TAB>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
-        };
-
-        // M, → TAB
-        combo_tab_r {
-            timeout-ms = <50>;
-            key-positions = <33 34>;  // M, ,
-            bindings = <&kp TAB>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
-        };
-
         // WR → TAB
-        combo_tab_wr {
+        combo_tab_l {
             timeout-ms = <50>;
             key-positions = <2 4>;  // W, R
             bindings = <&kp TAB>;
@@ -136,7 +120,7 @@
         };
 
         // UO → TAB
-        combo_tab_uo {
+        combo_tab_r {
             timeout-ms = <50>;
             key-positions = <7 9>;  // U, O
             bindings = <&kp TAB>;
