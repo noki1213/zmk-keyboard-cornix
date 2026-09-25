@@ -14,10 +14,9 @@
 #define BASE 0
 #define SYM 1
 #define NAV 2
-#define SHORT 3
-#define WINDOW 4
-#define SCROLL 5
-#define SETTING 6
+#define WINDOW 3
+#define SCROLL 4
+#define SETTING 5
 
 // キー位置の定義（Homerow Mods 用）
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // 左手
@@ -85,23 +84,6 @@
                 , <&macro_release &mo MACRO_PLACEHOLDER>;
         };
 
-        // レイヤー有効化 + 入った瞬間に ランチャー呼び出し用のキー（⇧⌃⌥⌘Space）を1回送る
-        // パラメータ = 有効化するレイヤー番号
-        // レイヤー中のキーは素の英字なので、そのままコマンド（ogh など）を打てる
-        layer_tk: layer_tk {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            wait-ms = <0>;
-            tap-ms = <10>;
-            bindings
-                = <&macro_param_1to1>
-                , <&macro_press &mo MACRO_PLACEHOLDER>
-                , <&macro_tap &kp LS(LC(LA(LG(SPACE))))>
-                , <&macro_pause_for_release>
-                , <&macro_param_1to1>
-                , <&macro_release &mo MACRO_PLACEHOLDER>;
-        };
-
         // Cmd+下スクロール（押している間続く）: ピンチアウト（ズームアウト）
         zoom_out: zoom_out {
             compatible = "zmk,behavior-macro";
@@ -121,7 +103,7 @@
             timeout-ms = <45>;
             key-positions = <2 4>;  // W, R
             bindings = <&kp TAB>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // UO → TAB
@@ -129,7 +111,7 @@
             timeout-ms = <45>;
             key-positions = <7 9>;  // U, O
             bindings = <&kp TAB>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // ER → Triggerkey (⇧⌃⌥⌘Space)
@@ -137,7 +119,7 @@
             timeout-ms = <45>;
             key-positions = <3 4>;  // E, R
             bindings = <&kp LS(LC(LA(LG(SPACE))))>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // UI → Triggerkey (⇧⌃⌥⌘Space)
@@ -145,7 +127,7 @@
             timeout-ms = <45>;
             key-positions = <7 8>;  // U, I
             bindings = <&kp LS(LC(LA(LG(SPACE))))>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // DF → 左クリック
@@ -193,7 +175,7 @@
             timeout-ms = <45>;
             key-positions = <14 16>;  // S, F
             bindings = <&kp F15>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // JL → F15
@@ -201,7 +183,7 @@
             timeout-ms = <45>;
             key-positions = <19 21>;  // J, L
             bindings = <&kp F15>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // FDS → F16
@@ -209,7 +191,7 @@
             timeout-ms = <45>;
             key-positions = <14 15 16>;  // S, D, F
             bindings = <&kp F16>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // JKL → F16
@@ -217,7 +199,7 @@
             timeout-ms = <45>;
             key-positions = <19 20 21>;  // J, K, L
             bindings = <&kp F16>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // FA → F17
@@ -225,7 +207,7 @@
             timeout-ms = <45>;
             key-positions = <13 16>;  // A, F
             bindings = <&kp F17>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // J- → F17
@@ -233,7 +215,7 @@
             timeout-ms = <45>;
             key-positions = <19 22>;  // J, -
             bindings = <&kp F17>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // WE → ESC
@@ -241,7 +223,7 @@
             timeout-ms = <45>;
             key-positions = <2 3>;  // W, E
             bindings = <&kp ESC>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // IO → ESC
@@ -249,7 +231,7 @@
             timeout-ms = <45>;
             key-positions = <8 9>;  // I, O
             bindings = <&kp ESC>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW, SHORT では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
         // LANG2+LANG1 タップ → Command + Option + Space、ホールド → Setting レイヤー
@@ -257,7 +239,7 @@
             timeout-ms = <45>;
             key-positions = <42 45>;  // LANG2(LH1), LANG1(RH1)
             bindings = <&lt SETTING LA(LG(SPACE))>;
-            layers = <BASE SYM NAV SHORT SCROLL SETTING>;  // WINDOW では無効
+            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
     };
@@ -343,20 +325,6 @@
             bindings = <&layer_ctrl_alt>, <&kp>;
 
             flavor = "tap-preferred";
-            tapping-term-ms = <180>;
-        };
-
-        // ランチャー呼び出し付きレイヤータップ（&lt の代わり）
-        // タップ: 第2引数のキー / ホールド: レイヤー有効化 + トリガーを1回送る
-        // flavor は hold-preferred。tap-preferred だと tapping-term を待ち切るまでホールドと確定せず、
-        // トリガー送出が毎回遅れるうえ、待ち時間内に次のキーを打つとタップ側（TAB）に倒れるため。
-        // hold-preferred は次のキーが押された瞬間にホールドが確定するので待ち時間が出ない。
-        lt_tk: layer_tap_tk {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&layer_tk>, <&kp>;
-
-            flavor = "hold-preferred";
             tapping-term-ms = <180>;
         };
 
@@ -610,7 +578,7 @@
 &none     &kp Q            &kp W            &kp E            &kp R  &kp T                    &kp Y      &kp U          &kp I            &kp O            &kp P                &none
 &none     &hm_l_shift LSHFT A    &hm_l LALT S     &hm_l LGUI D     &hm_l LCTRL F  &kp G          &kp H      &hm_r RCTRL J  &hm_r RGUI K     &hm_r RALT L     &hm_r_shift RSHFT MINUS  &none
 &none     &kp Z            &kp X            &kp C            &kp V  &kp B      &kp C_MUTE  &kp F13  &kp N      &kp M          &kp COMMA        &kp PERIOD       &mm_question         &none
-&none     &none            &none            &lt_tk SHORT LS(LC(LA(LG(SPACE)))) &lt SYM LANG2  &lt SCROLL SPACE          &lt_ctrl_alt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
+&none     &none            &none            &kp LS(LC(LA(LG(SPACE))))         &lt SYM LANG2  &lt SCROLL SPACE          &lt_ctrl_alt WINDOW ENTER  &lt NAV LANG1  &mm_bspc       &none          &none                &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
@@ -649,27 +617,6 @@
 &trans    &trans           &trans           &trans           &trans  &trans                   &ht_nav LG(LS(LEFT)) LG(LEFT)  &kp LEFT  &kp DOWN  &kp RIGHT  &ht_nav LG(LS(RIGHT)) LG(RIGHT)  &trans
 &trans    &trans           &trans           &trans           &trans  &trans     &trans &trans &trans     &trans      &trans       &trans           &trans               &trans
 &trans    &trans           &trans           &trans           &trans  &trans                   &trans     &trans      &trans       &trans           &trans               &trans
-            >;
-        };
-
-        shortcut_layer {
-            display-name = "Shortcut";
-
-            // ショートカットレイヤー（ランチャー専用）
-            // レイヤーキー（&lt_tk）をホールドした瞬間にトリガー(⇧⌃⌥⌘Space)が1回飛ぶ。
-            // このレイヤーの英字は素の &kp なので、ホームロー Mods もコンボも効かない。
-            // 押しっぱなしのまま ogh などのコマンドを打って離す。
-            // ------------------------------------------------------------------------------------------
-            // | --- |  Q  |  W  |  E  |  R  |  T  |           |  Y  |  U  |  I  |  O  |  P  | --- |
-            // | --- |  A  |  S  |  D  |  F  |  G  |           |  H  |  J  |  K  |  L  | --- | --- |
-            // | --- |  Z  |  X  |  C  |  V  |  B  | --- | --- |  N  |  M  | --- | --- | --- | --- |
-            //             | [L] | --- | --- |           |⌘+RET| --- | --- |
-
-            bindings = <
-&trans    &kp Q            &kp W            &kp E            &kp R   &kp T                    &kp Y           &kp U   &kp I        &kp O            &kp P                &trans
-&trans    &kp A            &kp S            &kp D            &kp F   &kp G                    &kp H           &kp J   &kp K        &kp L            &trans               &trans
-&trans    &kp Z            &kp X            &kp C            &kp V   &kp B   &trans &trans    &kp N           &kp M   &trans       &trans           &trans               &trans
-&trans    &trans           &trans           &trans           &trans  &trans                   &kp LG(ENTER)   &trans  &trans       &trans           &trans               &trans
             >;
         };
 
