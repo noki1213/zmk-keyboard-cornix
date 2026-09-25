@@ -114,22 +114,6 @@
             layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
         };
 
-        // ER → Triggerkey (⇧⌃⌥⌘Space)
-        combo_tk_l {
-            timeout-ms = <45>;
-            key-positions = <3 4>;  // E, R
-            bindings = <&kp LS(LC(LA(LG(SPACE))))>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
-        };
-
-        // UI → Triggerkey (⇧⌃⌥⌘Space)
-        combo_tk_r {
-            timeout-ms = <45>;
-            key-positions = <7 8>;  // U, I
-            bindings = <&kp LS(LC(LA(LG(SPACE))))>;
-            layers = <BASE SYM NAV SCROLL SETTING>;  // WINDOW では無効
-        };
-
         // DF → 左クリック
         combo_lclick {
             timeout-ms = <45>;
